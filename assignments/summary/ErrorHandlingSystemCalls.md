@@ -10,7 +10,7 @@ Here is how we might check for errors when we call the Linux fork function:
 }    
  
 The **strerror** function returns a text string that describes the error associated
-with a particular value of errno.
+with a particular value of **errno**.
 Whenever you are using a system call in your code you should always check for errors like given
 in the above example.      
 
