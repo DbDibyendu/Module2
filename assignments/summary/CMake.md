@@ -1,3 +1,4 @@
+# **CMake Summary**
 # The source and Binary Folders
 ![](https://preshing.com/images/cmake-concepts.png)
 # The Configure and Generate Steps
