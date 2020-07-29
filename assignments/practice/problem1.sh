@@ -1,10 +1,10 @@
-## @file <file_name>.sh
- #  @brief Give a description of the file 
+## @file problemq.sh
+ #  @brief 
  #  
- #  Give full description of the file 
+ #  sh file to connect to bluetooth device
  #  
- #  @author Full name of the author 
- #  @bug List Any bugs found in the file  
+ #  @author Dibyendu 
+ #  @bug I didn't find any bugs from my side   
  #
 
 #
@@ -31,14 +31,18 @@
  #  @brief Description on function_1
  #  
  #  Full description of the function
+ #  sh file to connect to bluetooth device in Linux
  #
+ # starts bluetooth if not started
+systemctl start bluetooth
+#open bluetoothctl
+bluetoothctl
+# register agent
+agent on
+# scan devices
+scan on
+# then just pair to the device u want to pair with
 
-function_1
-{
-
-        # Make sure you comment every line #
-	
-}
 
 
 #
