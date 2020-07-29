@@ -1,10 +1,10 @@
-/** @file <file_name>.c
+/** @file problem2.c
  *  @brief Give a description of the file 
  *  
  *  Give full description of the file 
  *  
- *  @author Full name of the author 
- *  @bug List Any bugs found in the file  
+ *  @author Dibyendu Biswas
+ *  @bug I didn't find any
  */
 
 /*
@@ -19,6 +19,7 @@
 
 /* --- Standard Includes --- */
 #include <stdio.h>
+#include<stdlib.h>
 
 /* --- Project Includes --- */
 
