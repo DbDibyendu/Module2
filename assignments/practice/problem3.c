@@ -6,7 +6,7 @@
     for the data structure which will search through the data structure when given
     timestamp value.
  *  
- *  @author KEERTHAN PORANDLA
+ *  @author Dibyendu Biswas
  *  @bug I didn't find a bug from my side
  */
 
@@ -51,6 +51,23 @@ struct data             // declaring structure with tagnmae as data and members 
     char sample[80];
     struct data *next;  
 };
+
+void unix_error(char *msg) /* unix-style error */
+{
+    fprintf(stderr, "%s: %s\n", msg, strerror(errno));
+    exit(0);
+}
+
+
+FILE *Fdopen(int fd, const char *type) 
+{
+    FILE *fp;
+
+    if ((fp = fdopen(fd, type)) == NULL)
+    unix_error((char*)"Fdopen error");
+
+    return fp;
+}
 
 struct data *parse(struct data *ptr)                                    // collecting the address of initial link list into a pointer which is structure type.
 {                                                                       // declarations and assigning the values

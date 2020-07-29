@@ -1,10 +1,10 @@
-/** @file <file_name>.c
- *  @brief Give a description of the file 
+/** @file problem4.c
+ *  @brief 
  *  
- *  Give full description of the file 
- *  
- *  @author Full name of the author 
- *  @bug List Any bugs found in the file  
+ *  Opening a file db.txt and searching the word iotiot in it
+ *   
+ *  @author Dibyendu Biswas 
+ *  @bug I didn't find a bug from my side
  */
 
 /*
@@ -61,24 +61,28 @@ int searchInFile(char *fname, char *str) {
             return (1);
         }
         line_num++;
+   
     }
 
     if(find_result == 0) {
         printf("\nSorry, couldn't find a match.\n");
+     
     }
     
     //Close the file if still open.
     if(fp) {
         fclose(fp);
     }
+    free(fp);  // freeing the memory
     return(0);
+
 }
 
 int main (void)
 {
+     
 
         /*Make sure you comment every line */
-        searchInFile("db.txt", "iotiot");
         searchInFile("db.txt", "iotiot");
         return 0;
         
