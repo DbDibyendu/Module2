@@ -53,18 +53,17 @@ struct data             // declaring structure with tagnmae as data and members 
     struct data *next;  
 };
 
-
-
 struct data *parse(struct data *ptr)                                    // collecting the address of initial link list into a pointer which is structure type.
 {                                                                       // declarations and assigning the values
     struct data *temp=NULL,*nu=NULL; 
     char temp1[80]={0};
     FILE *fp; // declaring a FILE pointer 
-    fp=fopen("data.csv","r");                                      // opening the file in read mode 
-    fprintf(stderr, "error: %s\n", strerror(errno));                            // checking for errors 
+    fp=fopen("data.csv","r");                                                            // opening the file in read mode                              
+      fprintf(stderr, "fork error: %s\n", strerror(errno));                       //checking for error through errno and printing it                 
     while(fgets(temp1,80,fp)!=NULL)                                     // by using fgets library function accepting the file content line by line and storing it into a temp1 char array 
     {
-        nu=(struct data *)calloc(1,sizeof(struct data));                               // allocating memory for new node with sizeof structure 
+        nu=calloc(1,sizeof(struct data));                                    // allocating memory for new node with sizeof structure  
+                                    
         strcpy(nu->sample,temp1);                                     //by using strcpy string copy, copying the content of temp1 to new node. 
         if(ptr==NULL) // checking condition if ptr is NULL the list is empty so, we allocate a new node to ptr initial one.
         {
@@ -80,6 +79,7 @@ struct data *parse(struct data *ptr)                                    // colle
             temp->next=nu;                                               // allocating new node to temp->next value
         }
     }
+
     return ptr;                                                                 // returning the initial value of the list.
 }
 
@@ -117,6 +117,7 @@ void Search(struct data *ptr)                                                   
         printf(" |");
         printf("\n");
     }
+    
 
 }
 
