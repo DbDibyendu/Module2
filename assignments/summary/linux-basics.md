@@ -1,6 +1,7 @@
 # Linux Basics
 
 #### Linux is a Unix-like, open source and community-developed operating system for computers, servers, mainframes, mobile devices and embedded devices. It is supported on almost every major computer platform including x86, ARM and SPARC, making it one of the most widely supported operating systems. 
+![](https://tecadmin.net/tutorial/wp-content/uploads/2017/10/linux-architecture-image.png)
 ## Summary of Basic commands
 ![](https://swcarpentry.github.io/shell-novice/fig/standard-filesystem-hierarchy.svg)
 
