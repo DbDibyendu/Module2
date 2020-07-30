@@ -1,11 +1,11 @@
 {
-    "wireless": {
+ "wireless": {
         "device": "wlan0",
         "status": "on",
         "ssid": "Hegde-Jio",
         "password": "secretpassword"
     },
-    "eth0": {
+ "eth0": {
         "device": "eth0",
         "status": "on",
         "allocation": "static",
@@ -13,7 +13,7 @@
         "subnetMask": "255.255.255.0",
         "routerAddress": "192.168.0.1"
     },
-    "eth1": {
+ "eth1": {
         "device": "eth1",
         "status": "on",
         "allocation": "static",
@@ -21,7 +21,7 @@
         "subnetMask": "null",
         "routerAddress": "null"
     },
-    "ethernet": [
+ "ethernet": [
         null,
         null
     ]
