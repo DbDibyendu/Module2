@@ -60,8 +60,8 @@ struct data *parse(struct data *ptr)                                    // colle
     struct data *temp=NULL,*nu=NULL; 
     char temp1[80]={0};
     FILE *fp; // declaring a FILE pointer 
-    fp=fopen("data.csv","r");   
-      fprintf(stderr, " error: %s\n", strerror(errno));                            // opening the file in read mode  
+    fp=fopen("data.csv","r");                                      // opening the file in read mode 
+    fprintf(stderr, "error: %s\n", strerror(errno));                            // checking for errors 
     while(fgets(temp1,80,fp)!=NULL)                                     // by using fgets library function accepting the file content line by line and storing it into a temp1 char array 
     {
         nu=(struct data *)calloc(1,sizeof(struct data));                               // allocating memory for new node with sizeof structure 
