@@ -1,28 +1,29 @@
 {
   "wireless": {
+    "device":"on",
     "status": "on",
     "ssid": "Hegde-Jio",
     "password": "secretpassword"
   },
-  "ethernet": {
-    "status": "on",
-    "allocation": "dhcp",
-    "ipAddress": "192.168.0.100",
-    "subnetMask": "255.255.255.0",
-    "routerAddress": "192.168.0.1"
-  },
-  "cloud": [
+  "ethernet": [
         {
-            "provider": "AWS",
-            "endpoint": "djsflkjsdlfjalsdkf",
-            "port": 8886,
-            "certLocation": "/home/yogesh/.aws/"
+          "device": "eth0",
+          "status": "on",
+          "allocation": "static",
+          "ipAddress": "192.168.0.100",
+          "subnetMask": "255.255.255.0",
+          "routerAddress": "192.168.0.1"
         },
         {
-            "provider": "Google",
-            "endpoint": "djsflkjsdlfjalsdkf",
-            "port": 9096,
-            "certLocation": "/home/yogesh/.gcp/"
-        }
-    ]
+          "device": "eth1",
+          "status": "on",
+          "allocation": "dhcp",
+          "ipAddress": null,
+          "subnetMask": null,
+          "routerAddress": null
+        }  
+        
+    ],
+    "hostname": "raspberrypi",
+    "timezone": "Asia/Kolkata"
 }
