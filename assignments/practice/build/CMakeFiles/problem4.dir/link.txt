@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/problem4.dir/problem4.c.o -o problem4 

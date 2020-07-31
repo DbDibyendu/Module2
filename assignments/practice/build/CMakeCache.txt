@@ -145,7 +145,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=problem3
+CMAKE_PROJECT_NAME:STATIC=problem2
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -216,10 +216,28 @@ CMakeLists.txt.bak_BINARY_DIR:STATIC=/home/dibyendu/module2/assignments/practice
 CMakeLists.txt.bak_SOURCE_DIR:STATIC=/home/dibyendu/module2/assignments/practice
 
 //Value Computed by CMake
+problem1_BINARY_DIR:STATIC=/home/dibyendu/module2/assignments/practice/build
+
+//Value Computed by CMake
+problem1_SOURCE_DIR:STATIC=/home/dibyendu/module2/assignments/practice
+
+//Value Computed by CMake
+problem2_BINARY_DIR:STATIC=/home/dibyendu/module2/assignments/practice/build
+
+//Value Computed by CMake
+problem2_SOURCE_DIR:STATIC=/home/dibyendu/module2/assignments/practice
+
+//Value Computed by CMake
 problem3_BINARY_DIR:STATIC=/home/dibyendu/module2/assignments/practice/build
 
 //Value Computed by CMake
 problem3_SOURCE_DIR:STATIC=/home/dibyendu/module2/assignments/practice
+
+//Value Computed by CMake
+problem4_BINARY_DIR:STATIC=/home/dibyendu/module2/assignments/practice/build
+
+//Value Computed by CMake
+problem4_SOURCE_DIR:STATIC=/home/dibyendu/module2/assignments/practice
 
 
 ########################
