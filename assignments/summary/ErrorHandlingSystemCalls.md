@@ -1,20 +1,9 @@
-# System Call Error Handling
+# Error Handling
+![](https://images.slideplayer.com/32/9839002/slides/slide_3.jpg)
+## System Call Error Handling
 Linux provides system calls that are the basic functions that help do stuff
 in Linux. While coding in Linux you will be using these functions 80 % of the
 time.      
 
 Here is how we might check for errors when we call the Linux fork function:
-> if ((pid = fork()) < 0) {     
->     fprintf(stderr, "fork error: %s\n", strerror(errno));       
-    exit(0);    
-}    
- 
-The **strerror** function returns a text string that describes the error associated
-with a particular value of **errno**.
-Whenever you are using a system call in your code you should always check for errors like given
-in the above example.      
-
-## Error Handling code snippets
-[![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbkFbUHJpbnQgRXJyb3IgTWVzc2FnZSBGdW5jdGlvbl0tLT5CW0xpbnV4IEkvTyByb3V0aW5lc10tLT5DXG5DW1N0YW5kYXJkIEZpbGUgSS9PIGZ1bmN0aW9uc10tLT5EW0R5bmFtaWMgU3RvcmFnZV0tLT5FXG5FW1Byb2Nlc3MgQ29udHJvbF0tLT5GW1NpZ25hbCBGdW5jdGlvbnNdLS0-R1xuR1tNZW1vcnkgTWFwcGluZ10tLT5IW1NvY2tldCBGdW5jdGlvbnNdLS0-SVxuSVtETlMgZnVuY3Rpb25zXS0tPmFbUHRocmVhZCBGdW5jdGlvbnNdLS0-YlxuYltTZW1hcGhvcmVzXS0tPmNbT3RoZXIgVW5jb21tb24gRnVuY3Rpb25zXVxuXG5cblxuICAgICAgY2xhc3NEZWYgY2xhc3MxIGZpbGw6I0Y0QTQ2MCxzdHJva2U6IzMzMyxzdHJva2Utd2lkdGg6NHB4O1xuICAgICAgY2xhc3NEZWYgY2xhc3MyIGZpbGw6I0ZGREFCOSxzdHJva2U6IzMzMyxzdHJva2Utd2lkdGg6NHB4O1xuICAgICAgY2xhc3NEZWYgY2xhc3MzIGZpbGw6XHRcdCM2NDk1RUQsc3Ryb2tlOiMzMzMsc3Ryb2tlLXdpZHRoOjRweDtcbiAgICAgIGNsYXNzRGVmIGNsYXNzNCBmaWxsOiNmOWYsc3Ryb2tlOiMzMzMsc3Ryb2tlLXdpZHRoOjRweDtcbiAgICAgIGNsYXNzRGVmIGNsYXNzNSBmaWxsOlx0I0ZGQjZDMSxzdHJva2U6IzMzMyxzdHJva2Utd2lkdGg6NHB4O1xuICAgIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbkFbUHJpbnQgRXJyb3IgTWVzc2FnZSBGdW5jdGlvbl0tLT5CW0xpbnV4IEkvTyByb3V0aW5lc10tLT5DXG5DW1N0YW5kYXJkIEZpbGUgSS9PIGZ1bmN0aW9uc10tLT5EW0R5bmFtaWMgU3RvcmFnZV0tLT5FXG5FW1Byb2Nlc3MgQ29udHJvbF0tLT5GW1NpZ25hbCBGdW5jdGlvbnNdLS0-R1xuR1tNZW1vcnkgTWFwcGluZ10tLT5IW1NvY2tldCBGdW5jdGlvbnNdLS0-SVxuSVtETlMgZnVuY3Rpb25zXS0tPmFbUHRocmVhZCBGdW5jdGlvbnNdLS0-YlxuYltTZW1hcGhvcmVzXS0tPmNbT3RoZXIgVW5jb21tb24gRnVuY3Rpb25zXVxuXG5cblxuICAgICAgY2xhc3NEZWYgY2xhc3MxIGZpbGw6I0Y0QTQ2MCxzdHJva2U6IzMzMyxzdHJva2Utd2lkdGg6NHB4O1xuICAgICAgY2xhc3NEZWYgY2xhc3MyIGZpbGw6I0ZGREFCOSxzdHJva2U6IzMzMyxzdHJva2Utd2lkdGg6NHB4O1xuICAgICAgY2xhc3NEZWYgY2xhc3MzIGZpbGw6XHRcdCM2NDk1RUQsc3Ryb2tlOiMzMzMsc3Ryb2tlLXdpZHRoOjRweDtcbiAgICAgIGNsYXNzRGVmIGNsYXNzNCBmaWxsOiNmOWYsc3Ryb2tlOiMzMzMsc3Ryb2tlLXdpZHRoOjRweDtcbiAgICAgIGNsYXNzRGVmIGNsYXNzNSBmaWxsOlx0I0ZGQjZDMSxzdHJva2U6IzMzMyxzdHJva2Utd2lkdGg6NHB4O1xuICAgIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
-   
-Link for the snippets [**Here**](https://gitlab.iotiot.in/newbies/iot-internship-feb-20/module2/wikis/4.1-System-call-error-handling#socket-functions)
+![](https://slideplayer.com/slide/13054382/79/images/34/System+Call+Error+Handling.jpg)

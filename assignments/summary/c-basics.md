@@ -1,7 +1,29 @@
 # C Basics
-## 1. C [**cheatsheet**](https://courses.cs.washington.edu/courses/cse351/16wi/sections/1/Cheatsheet-c.pdf)
-![](https://superiorprogrammer.files.wordpress.com/2013/01/c-programming-cheat-sheet.jpg)
-## 2.Basic Keywords
-![](https://gitlab.iotiot.in/newbies/iot-internship-feb-20/module2/wikis/uploads/c5b8710c61535712893349b943405128/Screenshot_from_2019-06-20_16-34-04.png)
-## A Flowchart mentioning what u need to learn
-[![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbkFbQy1wcm9nYW1taW5nLXN0cnVjdHVyZV0tLT4gIEJbQy1CYXNpYy1TeW50YXhdLS0-Q1xuQ1tDLURhdGEtVHlwZXNdLS0-RFtDLVZhcmlhYmxlc10tLT5FXG5FW0MtQ29uc3RhbnRzXS0tPkZbQy1TdG9yYWdlLUNsYXNzZXNdLS0-R1xuR1tDLWxvb3BzXS0tPkhbQy1GdW5jdGlvbnNdLS0-SVxuSVtDLVNjb3BlLVJvb2xzXS0tPnlbQy1BcnJheXNdLS0-aVtDLXBvaW50ZXJzXVxuaS0tPmdbQy1zdHJ1bmdzXS0tPm1bQy1TdHJ1Y3R1cmVzXS0tPmFbVHlwZWRlZl1cblxuXG5cbiAgICAgIGNsYXNzRGVmIGNsYXNzMSBmaWxsOiNGNEE0NjAsc3Ryb2tlOiMzMzMsc3Ryb2tlLXdpZHRoOjRweDtcbiAgICAgIGNsYXNzRGVmIGNsYXNzMiBmaWxsOiNGRkRBQjksc3Ryb2tlOiMzMzMsc3Ryb2tlLXdpZHRoOjRweDtcbiAgICAgIGNsYXNzRGVmIGNsYXNzMyBmaWxsOlx0XHQjNjQ5NUVELHN0cm9rZTojMzMzLHN0cm9rZS13aWR0aDo0cHg7XG4gICAgICBjbGFzc0RlZiBjbGFzczQgZmlsbDojZjlmLHN0cm9rZTojMzMzLHN0cm9rZS13aWR0aDo0cHg7XG4gICAgICBjbGFzc0RlZiBjbGFzczUgZmlsbDpcdCNGRkI2QzEsc3Ryb2tlOiMzMzMsc3Ryb2tlLXdpZHRoOjRweDtcbiAgICIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbkFbQy1wcm9nYW1taW5nLXN0cnVjdHVyZV0tLT4gIEJbQy1CYXNpYy1TeW50YXhdLS0-Q1xuQ1tDLURhdGEtVHlwZXNdLS0-RFtDLVZhcmlhYmxlc10tLT5FXG5FW0MtQ29uc3RhbnRzXS0tPkZbQy1TdG9yYWdlLUNsYXNzZXNdLS0-R1xuR1tDLWxvb3BzXS0tPkhbQy1GdW5jdGlvbnNdLS0-SVxuSVtDLVNjb3BlLVJvb2xzXS0tPnlbQy1BcnJheXNdLS0-aVtDLXBvaW50ZXJzXVxuaS0tPmdbQy1zdHJ1bmdzXS0tPm1bQy1TdHJ1Y3R1cmVzXS0tPmFbVHlwZWRlZl1cblxuXG5cbiAgICAgIGNsYXNzRGVmIGNsYXNzMSBmaWxsOiNGNEE0NjAsc3Ryb2tlOiMzMzMsc3Ryb2tlLXdpZHRoOjRweDtcbiAgICAgIGNsYXNzRGVmIGNsYXNzMiBmaWxsOiNGRkRBQjksc3Ryb2tlOiMzMzMsc3Ryb2tlLXdpZHRoOjRweDtcbiAgICAgIGNsYXNzRGVmIGNsYXNzMyBmaWxsOlx0XHQjNjQ5NUVELHN0cm9rZTojMzMzLHN0cm9rZS13aWR0aDo0cHg7XG4gICAgICBjbGFzc0RlZiBjbGFzczQgZmlsbDojZjlmLHN0cm9rZTojMzMzLHN0cm9rZS13aWR0aDo0cHg7XG4gICAgICBjbGFzc0RlZiBjbGFzczUgZmlsbDpcdCNGRkI2QzEsc3Ryb2tlOiMzMzMsc3Ryb2tlLXdpZHRoOjRweDtcbiAgICIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+C was initially used for system development work, in particular the programs that make-up the operating system. C was adoped as a system development language because it produces code that runs nearly as fast as code written in assembly language. Some examples of the use of C might be:
+
+- Operating Systems
+- Language Compilers
+- Assemblers
+- Text Editors
+- Print Spoolers
+- Network Drivers
+- Modern Programs
+- Data Bases
+- Language Interpreters
+- Utilities
+
+![](https://prepinsta.com/wp-content/uploads/elementor/thumbs/C-Programming-3-oabf097rgang5oxeebg9c9fvu3h7hzqljz29oos0aw.png)
+## Beginner's example
+> #include <stdio.h>   
+int main()    
+{    
+   /* My first program */    
+   printf("Hello, World! \n");    
+   return 0;        
+}  
+
+##  Intro to C flowcharts
+![](https://1.bp.blogspot.com/-duJuA7qQBHE/UleQkIucTkI/AAAAAAAAAN8/fH4etv1FQsY/s1600/FC2.JPG)
+#### The above flowchart prints out the max between 3 numbers
+## Cheatsheet
+![](https://media.cheatography.com/storage/thumb/pmg_c.750.jpg?last=1583078366)
