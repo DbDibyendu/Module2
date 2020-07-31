@@ -24,7 +24,7 @@
 #include <stdio.h> //standard input output library
 #include<stdlib.h> // header defines four variable types, several macros, and various functions for performing general functions.
 #include<string.h> // header contains library function of string manipulation functions
-#include<errno.h>
+#include<errno.h> // header files for error functions
 /* --- Project Includes --- */
 
 

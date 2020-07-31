@@ -1,7 +1,8 @@
 /** @file problem2.c
  *  @brief Give a description of the file 
  *  
- *  Parses the Json file
+ *  Parses the Json file and Configures the Ethernet and Wlan settings and 
+ *  Renames the hostname and sets the timezone
  *  
  *  @author Dibyendu Biswas
  *  @bug I didn't find any
@@ -20,6 +21,7 @@
 /* Standard Includes */
 #include <cstdio>
 #include <iostream>
+#include<errno.h>
 
 /* RapidJSON Includes */
 #include "include/rapidjson/document.h"
@@ -30,7 +32,6 @@
 #include "include/rapidjson/prettywriter.h"
 
 using namespace rapidjson;
-using namespace std;
 
 /*
  *#####################################################################
@@ -43,7 +44,7 @@ using namespace std;
 /** 
  *  @brief Description on function_1
  *  
- *  Full description of the function
+ *  Parses the Json file and configure the system change the hostname timzone, and settings for wifi and ethernet
  *
  *  @return List all Function returns 
  */
@@ -69,7 +70,7 @@ using namespace std;
         fclose(fp);
 
         /* Declare an object to store the value 
-         * and assign the document "ethernet" "status" value to eStatus
+         * and assign the document "wireles" "status" value to wStatus
          */
         Value& wStatus = d["wireless"]["status"];
 
@@ -77,21 +78,103 @@ using namespace std;
         std::cout << "Wireless Status = " << wStatus.GetString() << std::endl;
 
         /* Modify the string value */
-        wStatus.SetString("off");
+        wStatus.SetString("on");
 
+         
+        /* Declare an object to store the value 
+         * and assign the document "hostname" value to Host
+         */
+        Value& Host = d["hostname"];
+
+        /* Print the string value */
+        std::cout << "Hostname = " << Host.GetString() << std::endl;
         
+        char host[100]=" sudo hostnamectl set-hostname ";                     // creating char for system command
+        strcat(host,Host.GetString());                  // adding hostname for system command line to the previous command
 
-        /* Declare write buffer */ 
-        char writeBuffer[65536];
+         /* Declare an object to store the value 
+         * and assign the document "hostname" value to Host
+         */
+        Value& Time = d["timezone"];
 
-        /* Declare stream for writing the output stream */
-        FileWriteStream os(stdout, writeBuffer, sizeof(writeBuffer));
+        /* Print the string value */
+        std::cout << "Timezone = " << Time.GetString() << std::endl;
 
-        /* Make the output easier to read for Humans (Pretty) */
-        PrettyWriter<FileWriteStream> writer(os);
+        char time[100]="sudo timedatectl set-timezone ";    // creating char for changing time system command
+        strcat(time,Time.GetString());                          // adding giben timezone to the command line char
 
-        /* Write the JSON document `d` into the file `output.json`*/
-        d.Accept(writer);
+
+        /* System commands Here
+        *
+        */
+        system(host);                           // system command for setting new hostname
+        system(time);                           // System command for setting new timezone
+        //
+        // System commands Ends here
+
+
+        /* Configering Wifi
+        *
+        */
+        Value& User= d["wireless"]["ssid"];                      // Reading the ssid from wireless
+
+        /* Print the string value */
+        std::cout << "SSID = " << User.GetString() << std::endl;        //printing the ssid
+
+        Value& Pass= d["wireless"]["password"];                      // Reading the password from wireless
+
+        /* Print the string value */
+        std::cout << "password = " << Pass.GetString() << std::endl;        //printing the ssid
+        
+        char username[100],password[100];                             // creating strings for username and password
+        // copying the strings into the new strings made above
+        strcpy(username,User.GetString());                              
+        strcpy(password,Pass.GetString());
+          FILE* f1 = fopen("/etc/wpa_supplicant/wpa_supplicant.conf", "w");                                 // opeining the wifi configeration file
+          fprintf(f1,"network{ \n     ssid=\"%s\" \n     psk=\"%s\" \n} ",username,password);                  //adding the required setups
+          fclose(f1);                                                                                         // closing the file
+
+
+        /* Ethernet configeration
+        *
+        */
+        Value& Interface= d["ethernet"][0]["device"];                      // Reading the device type from ethernet
+
+        /* Print the string value */
+        std::cout << "Interface = " << Interface.GetString() << std::endl;      
+
+        Value& Ip= d["ethernet"][0]["ipAddress"];                      // Reading the IpAddess from ethernet
+
+        /* Print the string value */
+        std::cout << "IpAddress = " << Ip.GetString() << std::endl;  
+
+        Value& Mask= d["ethernet"][0]["subnetMask"];                      // Reading the mask from ethernet
+
+        /* Print the string value */
+        std::cout << "Mask = " << Mask.GetString() << std::endl;  
+
+        Value& Gateway= d["ethernet"][0]["routerAddress"];                      // Reading the gateway from ethernet
+
+        /* Print the string value */
+        std::cout << "Gateway = " << Gateway.GetString() << std::endl;      
+
+        char interface[100];                            // creating strings for interface
+        char ip[100];                             // creating strings for ipAddess
+        char mask[100];                                 // creating strings for mask
+        char gateway[100];                          // creating strings for gateway
+
+        // Copying all the d document strings into new strings 
+
+        strcpy(interface,Interface.GetString());
+        strcpy(ip,Ip.GetString());
+        strcpy(mask,Mask.GetString());
+        strcpy(gateway,Gateway.GetString());
+
+
+        FILE *f2= fopen("/etc/dhcpcd.conf","w");                                // opening the dhcpd.conf file for configeration
+        fprintf(f2,"interface %s\n static ip_address=%s\n static netmask=%s\n static gateway=%s",interface,ip,mask,gateway);  // printing all the values in required format
+        fclose(f2);                                                                             //closing the file
+
 }
 
 
@@ -105,19 +188,8 @@ using namespace std;
  */
 int main() 
 {
-        parse();
-
-        FILE* f1 = fopen("/etc/wpa_supplicant/wpa_supplicant.conf", "rb"); 
-        FILE* f2 = fopen("/etc/localtime","rb");
-        char temp[100];
-        while((fgets(temp,100,f1)!=NULL)){
-            printf("%s",temp);
-         }
-          while((fgets(temp,100,f2)!=NULL)){
-            printf("%s",temp);
-         }
-
-
+        parse();                    // calling the parse function
+        system("reboot");           // rebooting the system for changes to take place
         return 0;
 
 }
