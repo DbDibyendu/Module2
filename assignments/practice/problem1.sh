@@ -42,8 +42,9 @@ agent on
 # scan devices
 scan on
 # then just pair to the device u want to pair with
-
-
+# pair <Device_address>
+# trust <Device_address>
+# connect <Device_addess>
 
 #
  ######################################################################
