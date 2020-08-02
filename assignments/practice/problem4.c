@@ -21,6 +21,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<errno.h>
 
 /* --- Project Includes --- */
 
@@ -32,6 +33,53 @@
  *  Solve all your problems here 
  *#####################################################################
  */
+ 
+ 
+/**************************
+ * Error-handling functions
+ **************************/
+/* $begin errorfuns */
+/* $begin unixerror */
+void unix_error(char *msg) /* unix-style error */
+{
+    fprintf(stderr, "%s: %s\n", msg, strerror(errno));
+    exit(0);
+}
+/* $end unixerror */
+
+void posix_error(int code, char *msg) /* posix-style error */
+{
+    fprintf(stderr, "%s: %s\n", msg, strerror(code));
+    exit(0);
+}
+
+void app_error(char *msg) /* application error */
+{
+    fprintf(stderr, "%s\n", msg);
+    exit(0);
+}
+/* $end errorfuns */
+
+FILE *Fopen(const char *filename, const char *mode)
+{
+   FILE *fp;
+
+   if ((fp = fopen(filename, mode)) == NULL)
+   unix_error((char*)"Fopen error");
+
+   return fp;
+}
+
+char *Fgets(char *ptr, int n, FILE *stream)
+{
+   char *rptr;
+
+   if (((rptr = fgets(ptr, n, stream)) == NULL) && ferror(stream))
+   app_error((char*)"Fgets error");
+
+   return rptr;
+}
+
 
 /**
  * @brief      Search the given string in the file
@@ -53,7 +101,7 @@ int searchInFile(char *fname, char *str) {
       return(-1);
     }
 
-    while(fgets(temp, 512, fp) != NULL) {
+    while(Fgets(temp, 512, fp) != NULL) {
         if((strstr(temp, str)) != NULL) {
             printf("A match found on line: %d\n", line_num);
             printf("\n%s\n", temp);
