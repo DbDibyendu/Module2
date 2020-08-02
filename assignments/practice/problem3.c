@@ -36,6 +36,33 @@
  *#####################################################################
  */
 
+
+/************************** 
+ * Error-handling functions
+ **************************/
+/* $begin errorfuns */
+/* $begin unixerror */
+void unix_error(char *msg) /* unix-style error */
+{
+    fprintf(stderr, "%s: %s\n", msg, strerror(errno));
+    exit(0);
+}
+/* $end unixerror */
+
+void posix_error(int code, char *msg) /* posix-style error */
+{
+    fprintf(stderr, "%s: %s\n", msg, strerror(code));
+    exit(0);
+}
+
+void app_error(char *msg) /* application error */
+{
+    fprintf(stderr, "%s\n", msg);
+    exit(0);
+}
+/* $end errorfuns */
+
+
 /** 
  *  @brief 
  * "Search" function will search(by using the linked list formed and searching by strstr library function and searches by traversing through the linked lsit received as argument) the timestamp given as an input from the file data.csv and displays the coresponding values needed like sample value, MLII value and V5 value. and its returns no value.
@@ -57,9 +84,18 @@ struct data *parse(struct data *ptr)                                    // colle
 {                                                                       // declarations and assigning the values
     struct data *temp=NULL,*nu=NULL; 
     char temp1[80]={0};
-    FILE *fp; // declaring a FILE pointer 
-    fp=fopen("data.csv","r");                                                            // opening the file in read mode                              
-      fprintf(stderr, "Error: %s\n", strerror(errno));                       //checking for error through errno and printing it                 
+    FILE *fp;                           // declaring a FILE pointer 
+    char filename[10]="data.csv";                                      // declaring file name
+    char type[2]="r";                                                    // declaring file opening type
+    
+    // checking whether the file is open or not
+     if ((fp = fopen(filename, type)) == NULL){
+             unix_error((char*)"Fopen error");
+             return 0; 
+    }   
+    else{       
+
+    fp=fopen(filename,type);                                                         // or else opening the file in read mode                               
     while(fgets(temp1,80,fp)!=NULL)                                     // by using fgets library function accepting the file content line by line and storing it into a temp1 char array 
     {
         nu=calloc(1,sizeof(struct data));                                    // allocating memory for new node with sizeof structure  
@@ -81,6 +117,7 @@ struct data *parse(struct data *ptr)                                    // colle
     }
 
     return ptr;                                                                 // returning the initial value of the list.
+    }
 }
 
 void Search(struct data *ptr)                                                   // collecting the address of initial link list into a pointer which is structure type.

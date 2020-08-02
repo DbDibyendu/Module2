@@ -58,6 +58,7 @@ int searchInFile(char *fname, char *str) {
             printf("A match found on line: %d\n", line_num);
             printf("\n%s\n", temp);
             find_result++;
+            fclose(fp);             // closing the file and returning 1
             return (1);
         }
         line_num++;
@@ -66,14 +67,16 @@ int searchInFile(char *fname, char *str) {
 
     if(find_result == 0) {
         printf("\nSorry, couldn't find a match.\n");
-     
+        fclose(fp);                    // closing the file 
+        return 0;             
     }
     
-    //Close the file if still open.
+    //Close the file if still open and free the memory
     if(fp) {
         fclose(fp);
+        free(fp);
     }
-    free(fp);  // freeing the memory
+              
     return(0);
 
 }

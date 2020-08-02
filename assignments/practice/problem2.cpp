@@ -41,6 +41,34 @@ using namespace rapidjson;
  *#####################################################################
  */
 
+
+/************************** 
+ * Error-handling functions
+ **************************/
+/* $begin errorfuns */
+/* $begin unixerror */
+void unix_error(char *msg) /* unix-style error */
+{
+    fprintf(stderr, "%s: %s\n", msg, strerror(errno));
+    exit(0);
+}
+/* $end unixerror */
+
+void posix_error(int code, char *msg) /* posix-style error */
+{
+    fprintf(stderr, "%s: %s\n", msg, strerror(code));
+    exit(0);
+}
+
+void app_error(char *msg) /* application error */
+{
+    fprintf(stderr, "%s\n", msg);
+    exit(0);
+}
+/* $end errorfuns */
+
+
+
 /** 
  *  @brief Description on function_1
  *  
@@ -130,9 +158,20 @@ using namespace rapidjson;
         // copying the strings into the new strings made above
         strcpy(username,User.GetString());                              
         strcpy(password,Pass.GetString());
-          FILE* f1 = fopen("/etc/wpa_supplicant/wpa_supplicant.conf", "w");                                 // opeining the wifi configeration file
-          fprintf(f1,"network{ \n     ssid=\"%s\" \n     psk=\"%s\" \n} ",username,password);                  //adding the required setups
-          fclose(f1);                                                                                         // closing the file
+
+        FILE* f1;                               // declaring file pointer
+
+           // checking whether the file is open or not
+        if ((fp = fopen("/etc/wpa_supplicant/wpa_supplicant.conf", "w")) == NULL){
+             unix_error((char*)"Fopen error");
+             return 0; 
+        }   
+        // else rewrite the folder 
+        else{
+        f1=fopen("/etc/wpa_supplicant/wpa_supplicant.conf", "w");                                 // opeining the wifi configeration file
+        fprintf(f1,"network{ \n     ssid=\"%s\" \n     psk=\"%s\" \n} ",username,password);                  //adding the required setups
+        fclose(f1); 
+        }                                                                                        // closing the file
 
 
         /* Ethernet configeration
@@ -171,9 +210,19 @@ using namespace rapidjson;
         strcpy(gateway,Gateway.GetString());
 
 
-        FILE *f2= fopen("/etc/dhcpcd.conf","w");                                // opening the dhcpd.conf file for configeration
+        FILE *f2;                                                               // declaring file pointer
+          // checking whether the file is open or not
+        if ((fp = fopen("/etc/dhcpcd.conf", "w")) == NULL){
+             unix_error((char*)"Fopen error");
+             return 0; 
+        }   
+
+        // else rewrite the folder
+        else{
+        f2=fopen("/etc/dhcpcd.conf","w");                                // opening the dhcpd.conf file for configeration
         fprintf(f2,"interface %s\n static ip_address=%s\n static netmask=%s\n static gateway=%s",interface,ip,mask,gateway);  // printing all the values in required format
-        fclose(f2);                                                                             //closing the file
+        fclose(f2);
+        }                                                                             //closing the file
 
 }
 
