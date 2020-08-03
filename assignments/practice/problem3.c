@@ -116,7 +116,7 @@ struct data *parse(struct data *ptr)                                    // colle
     }   
     else{       
 
-    fp=fopen(filename,type);                                                         // or else opening the file in read mode                               
+    fp=Fopen(filename,type);                                                         // or else opening the file in read mode                               
     while(Fgets(temp1,80,fp)!=NULL)                                     // by using fgets library function accepting the file content line by line and storing it into a temp1 char array 
     {
         nu=(struct data*)calloc(1,sizeof(struct data));                                    // allocating memory for new node with sizeof structure  
